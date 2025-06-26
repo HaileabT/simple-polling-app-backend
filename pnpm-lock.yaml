@@ -17,6 +17,9 @@ importers:
       pg:
         specifier: ^8.16.2
         version: 8.16.2
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
       typeorm:
         specifier: ^0.3.25
         version: 0.3.25(pg@8.16.2)(reflect-metadata@0.2.2)(ts-node@10.9.2(@types/node@24.0.4)(typescript@5.8.3))
