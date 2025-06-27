@@ -13,7 +13,7 @@ api.listen(env.APP_PORT, async () => {
       if (serverStates.database.isInitialized) return { breakPoll: true };
       else return { breakPoll: false };
     },
-    1000,
+    3000,
     30000,
     {
       messageBetweenEachPoll: "Server is trying to connect with database",
