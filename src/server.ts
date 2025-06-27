@@ -1,9 +1,10 @@
 import { api } from "./api/api";
+import { UserRepository } from "./db/repositories/UserRepository";
 import { serverStates } from "./server.states";
 import { env } from "./shared/utils/env";
 import { poll } from "./shared/utils/poller";
 
-serverStates.database.initialize().then(() => {
+serverStates.database.initialize().then(async () => {
   console.log("Database connected successfully.");
 });
 

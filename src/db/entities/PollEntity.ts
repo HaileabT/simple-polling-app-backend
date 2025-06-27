@@ -17,10 +17,10 @@ export class PollEntity {
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt!: string;
 
-  @Column({ type: "datetime", name: "started_at" })
+  @Column({ type: "date", name: "started_at" })
   startedAt!: string;
 
-  @Column({ type: "datetime", name: "ended_at" })
+  @Column({ type: "date", name: "ended_at" })
   endedAt!: string;
 
   @Column({ name: "total_votes", default: 0 })

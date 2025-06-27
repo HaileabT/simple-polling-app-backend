@@ -10,7 +10,8 @@ const appDataSource = new DataSource({
   database: env.DB_NAME,
   ssl: false,
   synchronize: true,
-  entities: ["./entities/**/*.{js|ts}"],
+  logging: true,
+  entities: [__dirname + "/entities/**/*.ts"],
 });
 
 export { appDataSource };
