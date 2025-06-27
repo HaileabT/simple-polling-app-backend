@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
-  "type": "module",
+  "type": "commenjs",
   "scripts": {
-    "dev": "pnpm i -g nodemon && nodemon src/server.ts",
+    "dev": "nodemon src/server.ts",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -14,13 +14,14 @@
   "packageManager": "pnpm@10.12.3",
   "devDependencies": {
     "@types/express": "^5.0.3",
-    "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@types/node": "^24.0.4",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pg": "^8.16.2",
+    "ts-node": "^10.9.2",
     "typeorm": "^0.3.25"
   }
 }
