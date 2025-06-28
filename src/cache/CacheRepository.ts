@@ -23,7 +23,8 @@ class CacheRepository<T = any> {
   }
 
   async find(key: string) {
-    return await cache.get(key);
+    const data = await cache.get(key);
+    return JSON.parse(data || "") as T;
   }
 
   async update(key: string, object: T) {
