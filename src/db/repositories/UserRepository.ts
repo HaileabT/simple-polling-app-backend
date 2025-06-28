@@ -25,4 +25,12 @@ export class UserRepository {
     await UserRepository.ormRepo.delete(userId);
     return user;
   }
+
+  async find(username: string) {
+    const user = await UserRepository.ormRepo.findOne({
+      where: { username: username },
+    });
+
+    return user;
+  }
 }
