@@ -1,7 +1,16 @@
 import { Router } from "express";
-import { getOption } from "../controllers/option.controller";
+import {
+  createOption,
+  deleteOption,
+  updateOption,
+} from "../controllers/polloption.controller";
+import { catchAsync } from "../../shared/utils/catchAsync";
 const optionRoute = Router();
 
-optionRoute.get("/", getOption);
+optionRoute
+  .route("/")
+  .post(catchAsync(createOption))
+  .put(catchAsync(updateOption));
+optionRoute.route("/:id").delete(catchAsync(deleteOption));
 
 export { optionRoute };
