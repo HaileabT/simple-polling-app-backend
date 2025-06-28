@@ -3,16 +3,18 @@ import { VoteEntity } from "../entities/VoteEntity";
 
 export class VoteRepository {
   private static ormRepo = appDataSource.getRepository(VoteEntity);
-  private static repo: VoteEntity | null = null;
+  // private static repo: VoteEntity | null = null;
+  private static repo: VoteRepository | null = null;
 
   private constructor() {}
 
   public static getRepository() {
-    if (!this.repo) {
-      this.repo = new VoteEntity();
+    if (!VoteRepository.repo) {
+      // this.repo = new VoteEntity();
+      VoteRepository.repo = new VoteRepository();
     }
 
-    return this.repo;
+    return VoteRepository.repo;
   }
 
   async create(vote: Partial<VoteEntity>) {

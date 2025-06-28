@@ -3,16 +3,18 @@ import { PollEntity } from "../entities/PollEntity";
 
 export class PollRepository {
   private static ormRepo = appDataSource.getRepository(PollEntity);
-  private static repo: PollEntity | null = null;
+  // private static repo: PollEntity | null = null;
+  private static repo: PollRepository | null = null;
 
   private constructor() {}
 
   public static getRepository() {
-    if (!this.repo) {
-      this.repo = new PollEntity();
+    if (!PollRepository.repo) {
+      // this.repo = new PollEntity();
+      PollRepository.repo = new PollRepository();
     }
 
-    return this.repo;
+    return PollRepository.repo;
   }
 
   async create(poll: Partial<PollEntity>) {
