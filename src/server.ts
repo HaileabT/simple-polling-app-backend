@@ -1,5 +1,4 @@
 import { api } from "./api/api";
-import { UserRepository } from "./db/repositories/UserRepository";
 import { serverStates } from "./server.states";
 import { env } from "./shared/utils/env";
 import { poll } from "./shared/utils/poller";
@@ -7,6 +6,15 @@ import { poll } from "./shared/utils/poller";
 serverStates.database.initialize().then(async () => {
   console.log("Database connected successfully.");
 });
+
+serverStates.cache
+  .connect()
+  .then(() => {
+    console.log("Cache connection success.");
+  })
+  .catch((err) => {
+    console.log("Error connecting to the cache", err);
+  });
 
 api.listen(env.APP_PORT, async () => {
   await poll<void>(
