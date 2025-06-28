@@ -1,6 +1,11 @@
-import express from "express";
-import { indexRoute } from "./routes/index.route";
-const app = express();
-export { app };
+import express, { json } from "express";
 
-app.use("/api", indexRoute);
+const api = express();
+
+api.use(json());
+
+api.use("/", (req, res) => {
+  res.send("Hello from API");
+});
+
+export { api };

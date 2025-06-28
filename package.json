@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
-  "type": "commenjs",
   "scripts": {
     "dev": "nodemon src/server.ts",
     "start": "node dist/server.js"
@@ -21,7 +20,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pg": "^8.16.2",
-    "ts-node": "^10.9.2",
+    "reflect-metadata": "^0.2.2",
     "typeorm": "^0.3.25"
   }
 }
