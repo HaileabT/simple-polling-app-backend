@@ -3,6 +3,7 @@ import { pollCacheRepository } from "./cache/CacheRepository";
 import { serverStates } from "./server.states";
 import { env } from "./shared/utils/env";
 import { poll } from "./shared/utils/poller";
+import { httpServer } from "./socket/socket";
 
 serverStates.database.initialize().then(async () => {
   console.log("Database connected successfully.");
@@ -16,8 +17,7 @@ serverStates.cache
   .catch((err) => {
     console.log("Error connecting to the cache", err);
   });
-
-api.listen(env.APP_PORT, async () => {
+httpServer.listen(env.APP_PORT, async () => {
   await poll<void>(
     () => {
       if (serverStates.database.isInitialized) return { breakPoll: true };

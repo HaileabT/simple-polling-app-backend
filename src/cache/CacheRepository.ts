@@ -17,7 +17,11 @@ class CacheRepository<T = any> {
   }
 
   async create(key: string, object: T) {
-    const data = await cache.setEx(key, _CACHE_EXP_TIME, JSON.stringify(object));
+    const data = await cache.setEx(
+      key,
+      _CACHE_EXP_TIME,
+      JSON.stringify(object)
+    );
 
     return object;
   }
@@ -28,7 +32,11 @@ class CacheRepository<T = any> {
   }
 
   async update(key: string, object: T) {
-    const data = await cache.setEx(key, _CACHE_EXP_TIME, JSON.stringify(object));
+    const data = await cache.setEx(
+      key,
+      _CACHE_EXP_TIME,
+      JSON.stringify(object)
+    );
 
     return await cache.get(key);
   }
