@@ -3,16 +3,18 @@ import { PollOptionEntity } from "../entities/PollOptionEntity";
 
 export class PollOptionRepository {
   private static ormRepo = appDataSource.getRepository(PollOptionEntity);
-  private static repo: PollOptionEntity | null = null;
+  // private static repo: PollOptionEntity | null = null;
+  private static repo: PollOptionRepository | null = null;
 
   private constructor() {}
 
   public static getRepository() {
-    if (!this.repo) {
-      this.repo = new PollOptionEntity();
+    if (!PollOptionRepository.repo) {
+      // this.repo = new PollOptionEntity();
+      PollOptionRepository.repo = new PollOptionRepository();
     }
 
-    return this.repo;
+    return PollOptionRepository.repo;
   }
 
   async create(pollOption: Partial<PollOptionEntity>) {
@@ -26,7 +28,9 @@ export class PollOptionRepository {
   }
 
   async delete(pollOptionId: string) {
-    const pollOption = await PollOptionRepository.ormRepo.findBy({ id: pollOptionId });
+    const pollOption = await PollOptionRepository.ormRepo.findBy({
+      id: pollOptionId,
+    });
     await PollOptionRepository.ormRepo.delete(pollOptionId);
     return pollOption;
   }
