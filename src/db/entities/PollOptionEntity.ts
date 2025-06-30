@@ -13,7 +13,7 @@ export class PollOptionEntity {
   createdAt!: string;
 
   @Column({ name: "vote_amount", default: 0 })
-  voteAmount!: number;
+  voteAmount?: number;
 
   @ManyToOne(() => PollEntity)
   @JoinColumn({

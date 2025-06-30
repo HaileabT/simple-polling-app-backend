@@ -24,7 +24,7 @@ export class PollEntity {
   endedAt!: string;
 
   @Column({ name: "total_votes", default: 0 })
-  totalVotes!: number;
+  totalVotes?: number;
 
   @OneToMany(() => PollOptionEntity, (pollOption) => pollOption.poll, {
     onDelete: "CASCADE",
