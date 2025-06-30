@@ -1,7 +1,6 @@
-import { serverStates } from "../server.states";
+import { cacheClient as cache } from "./cache.client";
 import { PollCache } from "./types/PollCache";
 
-const { cache } = serverStates;
 const _CACHE_EXP_TIME = 3600 * 24 * 30 * 12 * 5;
 
 class CacheRepository<T = any> {
@@ -17,11 +16,7 @@ class CacheRepository<T = any> {
   }
 
   async create(key: string, object: T) {
-    const data = await cache.setEx(
-      key,
-      _CACHE_EXP_TIME,
-      JSON.stringify(object)
-    );
+    const data = await cache.setEx(key, _CACHE_EXP_TIME, JSON.stringify(object));
 
     return object;
   }
@@ -32,11 +27,7 @@ class CacheRepository<T = any> {
   }
 
   async update(key: string, object: T) {
-    const data = await cache.setEx(
-      key,
-      _CACHE_EXP_TIME,
-      JSON.stringify(object)
-    );
+    const data = await cache.setEx(key, _CACHE_EXP_TIME, JSON.stringify(object));
 
     return await cache.get(key);
   }

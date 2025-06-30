@@ -18,8 +18,8 @@ io.on("connection", (socket) => {
     const cacheRepo = pollCacheRepository;
     await cacheRepo.create(pollId, option);
     const catcheData = await cacheRepo.find(pollId);
-    socket.to(pollId).emit("voteupdate", catcheData);
+    io.to(pollId).emit("voteupdate", catcheData);
   });
 });
 
-export { httpServer };
+export { httpServer, io as socketServer };
